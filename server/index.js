@@ -13,7 +13,7 @@ connectDB();
 const app = express();
 
 const corsOptions = {
-  origin: ['http://localhost:5173', 'https://your-netlify-app-name.netlify.app']
+  origin: ['http://localhost:5173', 'https://inspiring-smakager-3a58cf.netlify.app/']
 };
 app.use(cors(corsOptions));
 app.use(express.json());
