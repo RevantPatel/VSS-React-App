@@ -1,0 +1,181 @@
+/* src/components/navbar.css */
+
+.nav {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 70px;
+}
+
+/* Apply flex properties directly to the container within the nav */
+.nav .container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* ... keep the rest of your navbar styles from nav to #login::after ... */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2.5rem;
+    align-items: baseline;
+}
+
+.nav-links li {
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links a {
+    color: var(--dark-color);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: var(--transition);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 1rem;
+}
+
+.bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    margin: 4px 0;
+    background-color: var(--dark-color);
+    transition: var(--transition);
+}
+
+#login {
+    color: white;
+    background-color: var(--primary-color);
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    transition: var(--transition);
+}
+
+#login:hover {
+    background-color: #2a75e6;
+    transform: translateY(-1px);
+}
+
+#login::after {
+    display: none;
+}
+
+
+/* MERGED Media Query */
+@media (max-width: 768px) {
+    .nav .container {
+        padding: 0 1.5rem;
+    }
+
+    nav {
+        order: 2;
+    }
+
+    .hamburger {
+        display: block;
+        z-index: 100;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        gap: 1rem;
+        text-align: center;
+        transition: 0.3s;
+        padding: 1rem 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
+        display: flex;
+        justify-content: center;
+        padding-bottom: 1.5rem !important;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+        width: 100%;
+        display: block;
+    }
+    
+    #login {
+        display: inline-block;
+        margin: 1rem auto;
+        padding: 0.75rem 2rem;
+        width: 200px;
+    }
+}
