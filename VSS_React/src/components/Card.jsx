@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 const Card = ({ car }) => {
 
-    const imageUrl = car.imageUrl ? `${RENDER_URL}${car.imageUrl}` : '';
+    const imageUrl = car.imageUrl ? `${'https://vss-backend.onrender.com'}${car.imageUrl}` : '';
 
     return (
         <div>
