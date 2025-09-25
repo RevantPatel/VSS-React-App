@@ -5,21 +5,33 @@ const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 const carRoutes = require('./routes/carRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
-const path = require('path'); // Make sure path is required at the top
-const uploadRoutes = require('./routes/uploadRoutes'); // Import upload routes
+const path = require('path');
+const uploadRoutes = require('./routes/uploadRoutes');
 
 dotenv.config();
 connectDB();
 const app = express();
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://inspiring-smakager-3a58cf.netlify.app'
+];
+
 const corsOptions = {
-  origin: ['http://localhost:5173', 'https://inspiring-smakager-3a58cf.netlify.app/']
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
 };
+
 app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('Hello from VSS Backend!');
+  res.send('API is running...');
 });
 
 app.use('/api/users', userRoutes);
