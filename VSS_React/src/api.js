@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 const API = axios.create({
-  baseURL: 'https://vss-backend.onrender.com',
+  baseURL: import.meta.env.MODE === 'production'
+    ? RENDER_URL
+    : '',
 });
 
 export default API;

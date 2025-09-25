@@ -3,7 +3,9 @@ import './card.css'
 import { NavLink } from 'react-router-dom'
 
 const Card = ({ car }) => {
-    const imageUrl = car.imageUrl ? `http://localhost:5000${car.imageUrl}` : 'path/to/default/image.png';
+
+    const imageUrl = car.imageUrl ? `${RENDER_URL}${car.imageUrl}` : '';
+
     return (
         <div>
             <div className="car-card">
