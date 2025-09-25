@@ -1,10 +1,8 @@
 import API from '../api';
 
-const API_URL = 'http://localhost:5000/api/users/';
-
 // Register user
 const register = async (userData) => {
-  const response = await API.post(API_URL + 'register', userData);
+  const response = await API.post('/api/users/register', userData);
   if (response.data) {
     localStorage.setItem('user', JSON.stringify(response.data));
   }
@@ -13,7 +11,7 @@ const register = async (userData) => {
 
 // Login user
 const login = async (userData) => {
-  const response = await API.post(API_URL + 'login', userData);
+  const response = await API.post('/api/users/login', userData);
   if (response.data) {
     localStorage.setItem('user', JSON.stringify(response.data));
   }

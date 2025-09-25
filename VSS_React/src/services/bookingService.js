@@ -1,7 +1,5 @@
 import API from '../api';
 
-const API_URL = 'http://localhost:5000/api/bookings/';
-
 // Create a new booking
 const createBooking = async (bookingData, token) => {
   const config = {
@@ -10,7 +8,7 @@ const createBooking = async (bookingData, token) => {
     },
   };
 
-  const response = await API.post(API_URL, bookingData, config);
+  const response = await API.post('/api/bookings', bookingData, config);
   return response.data;
 };
 

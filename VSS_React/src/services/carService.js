@@ -1,7 +1,5 @@
 import API from '../api';
 
-const API_URL = 'http://localhost:5000/api/cars/';
-
 const listCar = async (carData, token) => {
   const config = {
     headers: {
@@ -9,14 +7,13 @@ const listCar = async (carData, token) => {
       Authorization: `Bearer ${token}`,
     },
   };
-
-  const response = await API.post(API_URL + 'list', carData, config);
+  const response = await API.post('/api/cars/list', carData, config);
   return response.data;
 };
 
 // Get all cars
 const getCars = async (limit) => {
-  let url = API_URL;
+  let url = '/api/cars';
   if (limit) {
     url += `?limit=${limit}`; // Add the limit as a query parameter
   }
@@ -25,7 +22,7 @@ const getCars = async (limit) => {
 };
 
 const getCarById = async (id) => {
-  const response = await API.get(API_URL + id);
+  const response = await API.get(`/api/cars/${id}`);
   return response.data;
 };
 
