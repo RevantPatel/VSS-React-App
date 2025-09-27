@@ -148,6 +148,7 @@ nav {
         transition: 0.3s;
         padding: 1rem 0;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        align-items: center;
     }
 
     .nav-links.active {
@@ -171,7 +172,7 @@ nav {
         width: 100%;
         display: block;
     }
-    
+
     #login {
         display: inline-block;
         margin: 1rem auto;
