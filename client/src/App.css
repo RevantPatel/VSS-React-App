@@ -1,0 +1,80 @@
+/* src/App.css */
+
+.body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.car-listings {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .body {
+    padding: 1rem 0.5rem;
+  }
+  .car-listings {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+
+.home-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.feature-section {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  text-align: center; 
+}
+
+.section-title {
+  font-size: 2.5rem; 
+  font-weight: 700;
+  color: #1f2937; 
+  margin-bottom: 10px;
+}
+
+.section-title .highlight {
+  color: #2563eb;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #6b7280;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.near-me-wrapper {
+  background-color: #f9fafb; 
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .near-me-wrapper {
+    padding: 20px;
+  }
+  
+  .feature-section {
+    margin-top: 50px;
+  }
+}

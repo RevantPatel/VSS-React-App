@@ -23,15 +23,24 @@ const carSchema = new mongoose.Schema({
     required: true,
   },
   location: {
-    type: String,
-    required: true,
+    type: {
+      type: String, 
+      enum: ['Point'], 
+      required: true
+    },
+    coordinates: {     
+      type: [Number],
+      required: true
+    }
   },
   imageUrl: {
     type: String,
     required: true,
   },
-}, {
-  timestamps: true,
-});
+},
+  {
+    timestamps: true,
+  });
 
+carSchema.index({ location: "2dsphere" });
 module.exports = mongoose.model('Car', carSchema);

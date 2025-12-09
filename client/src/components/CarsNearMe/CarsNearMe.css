@@ -1,0 +1,76 @@
+/* --- Base Styles (Desktop First) --- */
+
+.near-me-container {
+  padding: 20px;
+  text-align: center;
+}
+
+/* 1. The Button Text */
+.find-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1rem;       /* 16px default */
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* 2. The "Success" Message Text */
+.success-msg {
+  font-size: 1.25rem;    /* 20px default */
+  color: #16a34a;        /* Green */
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* 3. The "No Data" / "Default" Message Text */
+.no-data-msg {
+  background-color: #f3f4f6;
+  padding: 30px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+.no-data-msg p:first-child {
+  font-size: 1.2rem;     /* 19px - Main Message */
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+.no-data-msg p:last-child {
+  font-size: 0.95rem;    /* 15px - Subtitle */
+  color: #6b7280;
+}
+
+/* --- 📱 MOBILE RESPONSIVENESS (The Magic Part) --- */
+@media (max-width: 600px) {
+  
+  /* Shrink the button slightly */
+  .find-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;   /* 14px on mobile */
+    width: 100%;         /* Make button full width on phone */
+  }
+
+  /* Shrink the Success Message */
+  .success-msg {
+    font-size: 1.1rem;   /* 17.5px on mobile */
+  }
+
+  /* Shrink the No Data Message box */
+  .no-data-msg {
+    padding: 20px;       /* Less padding */
+  }
+
+  .no-data-msg p:first-child {
+    font-size: 1rem;     /* 16px on mobile */
+  }
+
+  .no-data-msg p:last-child {
+    font-size: 0.85rem;  /* 13.5px on mobile */
+  }
+}

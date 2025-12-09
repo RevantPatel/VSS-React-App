@@ -13,7 +13,7 @@ connectDB();
 const app = express();
 
 const allowedOrigins = [
-  'http://localhost:5173',
+  'https://localhost:5173',
   'https://inspiring-smakager-3a58cf.netlify.app'
 ];
 
@@ -36,11 +36,6 @@ app.get('/', (req, res) => {
 
 app.use('/api/users', userRoutes);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
 app.use('/api/cars', carRoutes);
 
 app.use('/api/bookings', bookingRoutes);
@@ -48,3 +43,11 @@ app.use('/api/bookings', bookingRoutes);
 app.use('/api/upload', uploadRoutes);
 
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+
+const { errorHandler } = require('./middleware/errorMiddleware');
+app.use(errorHandler);

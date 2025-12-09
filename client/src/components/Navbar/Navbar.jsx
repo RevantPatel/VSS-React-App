@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './navbar.css'
 import { NavLink, useNavigate  } from 'react-router-dom';
-import authService from '../services/authService';
+import authService from '../../services/authService';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);

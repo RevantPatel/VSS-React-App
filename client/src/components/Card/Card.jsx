@@ -1,10 +1,11 @@
 import React from 'react'
 import './card.css'
 import { NavLink } from 'react-router-dom'
+import API from '../../api';
 
 const Card = ({ car }) => {
 
-    const imageUrl = car.imageUrl ? `${'https://vss-backend.onrender.com'}${car.imageUrl}` : '';
+    const imageUrl = car.imageUrl ? `${API}${car.imageUrl}` : '';
 
     return (
         <div>
@@ -20,7 +21,7 @@ const Card = ({ car }) => {
                     <div className="car-info">
                         <span>{car.year}</span>
                         <span>Sedan</span>
-                        <span>{car.location}</span>
+                        <span>{car.location.coordinates ? "Near You" : car.location}</span>
                     </div>
                     <div className="car-features">
                         <span className="feature">Automatic</span>

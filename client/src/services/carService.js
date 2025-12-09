@@ -26,10 +26,16 @@ const getCarById = async (id) => {
   return response.data;
 };
 
+const getCarsNearMe = async (lat , lng) =>{
+  const res =await API.get(`/api/cars/near-me?lat=${lat}&lng=${lng}`)
+  return res.data;
+};
+
 const carService = {
   listCar,
   getCars,
   getCarById,
+  getCarsNearMe,
 };
 
 export default carService;

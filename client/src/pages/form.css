@@ -1,0 +1,114 @@
+.form-container {
+  max-width: 450px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: var(--box-shadow, 0 4px 6px rgba(0,0,0,0.1)); /* Added fallback if var is missing */
+}
+
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--dark-color, #333);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #374151; /* Dark grey for better readability */
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.error-message {
+  color: var(--danger-color, #dc2626);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* --- NEW: Map & Location Section Styles --- */
+
+/* The grey box container for the map */
+.location-box {
+  border: 1px solid #e5e7eb;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9fafb; /* Light grey background */
+  margin-bottom: 20px;
+}
+
+.location-label {
+  font-weight: 700;
+  margin-bottom: 12px;
+  display: block;
+  color: #1f2937;
+}
+
+/* The 'Center Map on GPS' Button */
+.gps-btn {
+  background-color: #4b5563; /* Cool Grey */
+  color: white;
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: auto;
+  display: inline-block;
+}
+
+.gps-btn:hover {
+  background-color: #374151;
+}
+
+/* Row for the Read-Only Coordinate inputs */
+.coords-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.coords-group {
+  flex: 1;
+}
+
+.coords-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 4px;
+  display: block;
+  font-weight: 600;
+}
+
+.coords-input {
+  width: 100%;
+  background-color: #e5e7eb; /* Grey background indicates Read-Only */
+  border: 1px solid #d1d5db;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: monospace;     /* Looks like data/code */
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+/* Uploading text style */
+.upload-status {
+  color: #2563eb;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}

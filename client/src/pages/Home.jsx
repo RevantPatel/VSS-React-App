@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Hero from '../components/Hero';
-import Card from '../components/Card';
+import Hero from '../components/Hero/Hero';
+import Card from '../components/Card/Card';
 import carService from '../services/carService';
 import '../App.css';
 import { NavLink } from 'react-router-dom';
+import CarsNearMe from '../components/CarsNearMe/CarsNearMe';
 
 const Home = () => {
   const [cars, setCars] = useState([]);
@@ -14,11 +15,10 @@ const Home = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        // Fetch only 9 cars for the homepage
         const carData = await carService.getCars(9);
         setCars(carData);
       } catch (err) {
-        // ... error handling
+        //errors
       } finally {
         setLoading(false);
       }
@@ -30,6 +30,23 @@ const Home = () => {
   return (
     <>
       <Hero />
+
+      <section className="feature-section">
+        <div className="home-container">
+          <h2 className="section-title">
+            Find Cars <span className="highlight">Near You</span>
+          </h2>
+
+          <p className="section-subtitle">
+            Use your current location to find available vehicles within 10km.
+          </p>
+          
+          <div className="near-me-wrapper">
+            <CarsNearMe /> 
+          </div>
+        </div>
+      </section>
+
       <div className="body">
         <h2>Available Cars</h2>
         {loading && <p>Loading cars...</p>}
