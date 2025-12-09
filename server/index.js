@@ -14,7 +14,7 @@ const app = express();
 
 const allowedOrigins = [
   'https://localhost:5173',
-  'https://inspiring-smakager-3a58cf.netlify.app'
+  'https://vehicle-sharing-system.netlify.app/'
 ];
 
 const corsOptions = {
