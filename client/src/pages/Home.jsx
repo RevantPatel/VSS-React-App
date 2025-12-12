@@ -18,7 +18,7 @@ const Home = () => {
         const carData = await carService.getCars(9);
         setCars(carData);
       } catch (err) {
-        //errors
+        console.error("Error fetching cars:", error);
       } finally {
         setLoading(false);
       }
@@ -40,9 +40,9 @@ const Home = () => {
           <p className="section-subtitle">
             Use your current location to find available vehicles within 10km.
           </p>
-          
+
           <div className="near-me-wrapper">
-            <CarsNearMe /> 
+            <CarsNearMe />
           </div>
         </div>
       </section>

@@ -3,12 +3,17 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import carService from '../services/carService';
 import bookingService from '../services/bookingService';
+import Payment from '../components/Payment/Payment';
 import './form.css';
 
 const Booking = () => {
   const [car, setCar] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  
+  const [showPayment, setShowPayment] = useState(false);
+  const [bookingDetails, setBookingDetails] = useState(null);
+
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -16,6 +21,7 @@ const Booking = () => {
   const watchStartDate = watch("startDate");
   const watchEndDate = watch("endDate");
 
+  // Fetch Car Details
   useEffect(() => {
     const fetchCar = async () => {
       try {
@@ -30,6 +36,7 @@ const Booking = () => {
     fetchCar();
   }, [id]);
 
+  // Calculate Price Helper
   const calculateTotalPrice = () => {
     if (watchStartDate && watchEndDate && car) {
       const start = new Date(watchStartDate);
@@ -49,19 +56,29 @@ const Booking = () => {
       return;
     }
 
-    const bookingData = {
-      car: car._id,
+    const price = calculateTotalPrice();
+    if (price <= 0) {
+      alert("Please select valid dates");
+      return;
+    }
+
+    const bookingPayload = {
+      carId: car._id,
       startDate: data.startDate,
       endDate: data.endDate,
-      totalPrice: calculateTotalPrice(),
+      totalPrice: price,
     };
 
     try {
-      await bookingService.createBooking(bookingData, user.token);
-      alert('Booking successful!');
-      navigate('/');
+      const newBooking = await bookingService.createBooking(bookingPayload, user.token);
+      console.log("Booking Created (Pending):", newBooking);
+
+      setBookingDetails(newBooking);
+      setShowPayment(true);
+      
     } catch (err) {
-      alert('Failed to create booking.');
+      console.error(err);
+      alert(err.response?.data?.message || 'Failed to initialize booking.');
     }
   };
 
@@ -73,6 +90,7 @@ const Booking = () => {
       <h1>Book: {car.make} {car.model}</h1>
       <p><strong>Price:</strong> ₹{car.pricePerDay}/day</p>
 
+      {/* The Booking Form */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
           <label htmlFor="startDate">Start Date</label>
@@ -83,12 +101,27 @@ const Booking = () => {
           <input type="date" {...register('endDate', { required: true })} />
         </div>
 
-        <h3>Total Price: ₹{calculateTotalPrice()}</h3>
+        <h3 style={{ margin: '20px 0', color: '#16a34a' }}>
+          Total Price: ₹{calculateTotalPrice()}
+        </h3>
 
         <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>
-          Confirm Booking
+          Proceed to Payment
         </button>
       </form>
+
+      {/* --- THE PAYMENT MODAL (Pop-up) --- */}
+      {showPayment && bookingDetails && (
+        <Payment 
+          booking={bookingDetails} 
+          onClose={() => setShowPayment(false)}
+          onSuccess={() => {
+            setShowPayment(false);
+            alert("🎉 Booking Confirmed! Redirecting home...");
+            navigate('/');
+          }} 
+        />
+      )}
     </div>
   );
 };

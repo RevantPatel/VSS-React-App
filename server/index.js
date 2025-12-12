@@ -7,6 +7,7 @@ const carRoutes = require('./routes/carRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
 const path = require('path');
 const uploadRoutes = require('./routes/uploadRoutes');
+const paymentRoutes = require('./routes/paymentRoutes');
 
 dotenv.config();
 connectDB();
@@ -43,6 +44,8 @@ app.use('/api/bookings', bookingRoutes);
 app.use('/api/upload', uploadRoutes);
 
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
+app.use('/api/payment', paymentRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
