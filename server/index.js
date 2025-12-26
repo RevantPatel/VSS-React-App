@@ -14,7 +14,7 @@ connectDB();
 const app = express();
 
 const allowedOrigins = [
-  'https://localhost:5173',
+  // 'https://localhost:5173',
   'https://vehicle-sharing-system.netlify.app/'
 ];
 
