@@ -1,4 +1,4 @@
-const { error } = require('console');
+
 const asyncHandler = require('../middleware/asyncHandler');
 const Booking = require('../models/Booking');
 const crypto = require('crypto');
@@ -16,7 +16,7 @@ const createOrder = asyncHandler(async (req, res) => {
         id: orderId,
         currency: "INR",
         amount: amount * 100,// Razorpay always expects paise convert to rupee
-        status: "creted"
+        status: "created"
     });
 
 });
